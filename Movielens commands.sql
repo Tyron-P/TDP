@@ -27,12 +27,14 @@ from ratings group by movie_id) averages on m.id=averages.movie_id where `avg(ra
 Select name from genres;
 Select id, name from genres where name='Sci-Fi';
 
-Select m.id, m.title from movies m where m.id=
-(select gm.id from genres_movies gm where gm.genre_id=15);
+Select m.id, m.title from movies m join
+(select gm.movie_id from genres_movies gm where gm.genre_id=15) as Scifi_movies on Scifi_movies.movie_id=m.id;
 
+Select age, gender from users where age=24 and gender="m";
 
 select o.id, o.name from occupations o where name="student";
-Select age, gender from users where age=24 and gender="m";
+
+
 select gm.genre_id from genres_movies gm where gm.genre_id=15;
 
 
@@ -44,3 +46,4 @@ Select u.id, u.occupation_id from users u
 select genre_id
 #4.	List the unique titles of each of the movies released on the most popular release day.
 #5.	Find the total number of movies in each genre; list the results in ascending numeric order.
+
